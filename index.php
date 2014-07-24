@@ -40,7 +40,21 @@
 		</div>
 
 		<div class="tabContent" id="work">
-			Work
+			Here are a few samples of my work:<br />
+
+		<?php
+			$images = glob('./images/works/*.{jpg,gif,png}', GLOB_BRACE);
+
+			foreach($images as $img) {
+				$key = array_search($img, $images) + 1;
+				echo '
+					<a class="lightbox" href="#work'. $key .'">
+		   				<img src="'. $img .'"/>
+					</a>	
+				';
+			}
+		?>
+	
 		</div>
 
 		<div class="tabContent" id="contact">
@@ -48,11 +62,23 @@
 			<input type="text" placeholder="First Name" name="FirstName"><input type="text" placeholder="Last Name" name="LastName"><input type="text" placeholder="Email Address" name="Email"><br/>
 			<textarea rows="12" cols="55"></textarea><br/>
 			<input type="submit" name="submit" value="Submit" class="button">|<input type="reset" name="reset" value="Reset" class="button">
-			</form
->		</div>
+			</form>		
+		</div>
 	</div>
 	
 	<div class="footer"><a href=""><img src="images/gh-icon.png" /></a> <a href=""><img src="images/fb-icon.png" /></a></div>
+
+	<?php
+			foreach($images as $img) {
+				$key = array_search($img, $images) + 1;
+				echo '
+					<div class="lightbox-target" id="work'. $key .'"">
+						<img src="'. $img .'"/>
+						<a class="lightbox-close" href="#"></a>
+					</div>
+				';
+			}
+		?>
 
 	</body>
 </html>
