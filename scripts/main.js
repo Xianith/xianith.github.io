@@ -1,5 +1,6 @@
 var tabLinks = new Array();
 var contentDivs = new Array();
+var message = "";
 
 function init() {
       var tabListItems = document.getElementById('tabs').childNodes;
@@ -28,7 +29,9 @@ function init() {
         i++;
       }
 
+      if (window.location.hash.substr(1) != "") {
       loadTab();
+      }
     }
 
 function showTab() {
@@ -49,8 +52,8 @@ function showTab() {
 function loadTab() {
   var selectedId = window.location.hash.substr(1);
 
-  if (selectedId == "" || selectedId != ("work" || "contact" || "aboute"))
-    { selectedId = "about"; }
+  // if (selectedId == "" || selectedId != ("work" || "contact" || "aboute"))
+  //   { selectedId = "about"; }
 
   for ( var id in contentDivs ) {
         if ( id == selectedId ) {
@@ -74,3 +77,58 @@ function getHash( url ) {
       var hashPos = url.lastIndexOf ( '#' );
       return url.substring( hashPos + 1 );
     }
+
+function validateForm() {
+    var eValid = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var nValid = /^[a-zA-Z ]*$/;
+    var sValid = /^[a-zA-Z0-9 ]*$/;
+    var eCount = 0;
+
+    errorMsgReset();
+
+    email = document.getElementById("formEmail").value;
+    name = document.getElementById("formName").value;
+    subject = document.getElementById("formSubject").value;
+
+    if (eValid.test(email) != true || email == "") { errorMessage("email"); return false; }
+    if (nValid.test(name) != true || name == "") { errorMessage("name"); return false; }
+    if (sValid.test(subject) != true || subject == "") { errorMessage("subject"); return false; }
+}
+
+function errorMessage( type ) {
+  var error = document.getElementById("errorBox");
+  var errorMsg = document.getElementById("errorMsg");
+
+  switch(type) {
+    case "name":
+      document.getElementById("formName").style.border="1px solid red"
+      message = message + "<li>You can only place letters in the name field</li>";
+      break;
+    case "subject":
+      document.getElementById("formSubject").style.border="1px solid red"
+      message = message + "<li>You can only place letters and numbers in the subject field</li>";
+      break;
+    case "email":
+      document.getElementById("formEmail").style.border="1px solid red"
+      message = message + "<li>Email must be formatted like so: you@email.com</li>";
+      break;
+    default:
+      message = "";
+      break;
+  }
+
+  error.style.opacity=1;
+
+  errorMsg.innerHTML=message;
+}
+
+function errorMsgReset() {
+  var error = document.getElementById("errorBox");
+
+  message = "";
+
+  document.getElementById("formName").style.border="1px solid black"
+  document.getElementById("formSubject").style.border="1px solid black"
+  document.getElementById("formEmail").style.border="1px solid black"
+
+}

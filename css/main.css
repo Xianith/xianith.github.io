@@ -162,24 +162,29 @@ form label{
 
 form input {
 	border: 1px solid;
-padding: 3px;
+	padding: 3px;
 }
 
 form textarea {
 	border: 1px solid;
-padding: 3px;
+	padding: 3px;
 }
 
 .formBox {
 	display: inline-block;
 }
 
-.errorBox {
-	margin: 10px 0 2px 0;
+#errorBox {
+	opacity: 0;
 	padding: 0;
 }
 
-.errorBox b {
+#errorBox li {
+
+	text-align: left;
+}
+
+#errorBox b {
 	color: red;
 	font-size: 30px; font-family: custm_bit;
 }

@@ -76,33 +76,37 @@
 
 		<div class="tabContent" id="contact">
 		<h1>Contact<hr></h1>
-			<form action="#contact" method="post" enctype="text/plan" id="emailForm" onsubmit="validateForm()">
+
+			<form action="#contact" method="post" id="emailForm" onsubmit="return validateForm()">
 			
 			<div class="formBox">
 				<label for="formName">Name</label>
-				<input type="text" placeholder="Name" id="formName">
+				<input type="text" placeholder="Name" name="formName" id="formName">
 			</div>
 			<div class="formBox">
-				<label for="formSubhect">Subject</label>
-				<input type="text" placeholder="Subject" id="formSubhect">
+				<label for="formSubkect">Subject</label>
+				<input type="text" placeholder="Subject" name="formSubject" id="formSubject">
 			</div>
 			<div class="formBox">
 				<label for="formEmail">E-Mail</label>
-				<input type="text" placeholder="E-Mail" id="formEmail">
+				<input type="text" placeholder="E-Mail" name="formEmail" id="formEmail">
 			</div><br>
 
-			<div class="errorBox">
-				<b>Error</b><br> #REPLACE
+			<div id="errorBox">
+				<b>Errors</b><p id="errorMsg">Test</p>
 			</div><br>
 			
 			<div class="formBox">
 				<label for="formMessage">Message</label>
-				<textarea rows="12" cols="55" id="formMessage"></textarea>
+				<textarea rows="12" cols="55" id="formMessage" name="formMessage"></textarea>
 			</div>
 
 			<br>
 				<input type="submit" name="submit" value="Submit" class="button">|<input type="reset" name="reset" value="Reset" class="button">
 			</form>
+
+			<?php include 'scripts/main.php' ?>
+
 		</div>
 	</div>
 	
