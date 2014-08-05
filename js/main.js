@@ -27,6 +27,8 @@ function init() {
         if ( i != 0 ) contentDivs[id].className = 'tabContent hide';
         i++;
       }
+
+      loadTab();
     }
 
 function showTab() {
@@ -43,6 +45,37 @@ function showTab() {
       }
       return false;
     }
+
+function loadTab() {
+  var selectedId = window.location.hash.substr(1);
+
+  // Need to test this more so you can't use hashtags for tabs that don't exist.
+
+  // console.log(selectedId);
+
+  // for ( var i = 0; i < contentDivs.length; i++) {
+  //   if ( selectedId != contentDivs[i] ) {
+  //     console.log("Test Failed")
+  //     return false;
+  //   }
+  // }
+
+  // for ( test in contentDivs){
+  //   console.log(test);
+
+  // }
+
+  for ( var id in contentDivs ) {
+        if ( id == selectedId ) {
+          tabLinks[id].className = 'selected';
+          contentDivs[id].className = 'tabContent';
+        } else {
+          tabLinks[id].className = '';
+          contentDivs[id].className = 'tabContent hide';
+        }
+      }
+  return false;
+}
 
 function getFirstChildWithTagName( element, tagName ) {
       for ( var i = 0; i < element.childNodes.length; i++ ) {
