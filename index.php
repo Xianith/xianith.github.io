@@ -4,7 +4,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="css/main.css" type="text\css" media="all" />
-	<script src="js/main.js"></script>
+	<script src="scripts/main.js"></script>
 	<title>Ben Paulson</title>
 	</head>
 
@@ -76,11 +76,33 @@
 
 		<div class="tabContent" id="contact">
 		<h1>Contact<hr></h1>
-			<form action="" method="post" enctype="text/plan" id="emailForm" onsubmit="validateForm()">
-			<input type="text" placeholder="First Name" name="FirstName"><input type="text" placeholder="Last Name" name="LastName"><input type="text" placeholder="Email Address" name="Email"><br/>
-			<textarea rows="12" cols="55"></textarea><br/>
-			<input type="submit" name="submit" value="Submit" class="button">|<input type="reset" name="reset" value="Reset" class="button">
-			</form>		
+			<form action="#contact" method="post" enctype="text/plan" id="emailForm" onsubmit="validateForm()">
+			
+			<div class="formBox">
+				<label for="formName">Name</label>
+				<input type="text" placeholder="Name" id="formName">
+			</div>
+			<div class="formBox">
+				<label for="formSubhect">Subject</label>
+				<input type="text" placeholder="Subject" id="formSubhect">
+			</div>
+			<div class="formBox">
+				<label for="formEmail">E-Mail</label>
+				<input type="text" placeholder="E-Mail" id="formEmail">
+			</div><br>
+
+			<div class="errorBox">
+				<b>Error</b><br> #REPLACE
+			</div><br>
+			
+			<div class="formBox">
+				<label for="formMessage">Message</label>
+				<textarea rows="12" cols="55" id="formMessage"></textarea>
+			</div>
+
+			<br>
+				<input type="submit" name="submit" value="Submit" class="button">|<input type="reset" name="reset" value="Reset" class="button">
+			</form>
 		</div>
 	</div>
 	
