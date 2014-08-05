@@ -4,15 +4,28 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="css/main.css" type="text\css" media="all" />
-	<script src="js/tabs.js"></script>
-	<script src="js/contact.js"></script>
+	<script src="js/main.js"></script>
 	<title>Ben Paulson</title>
 	</head>
 
+	<noscript>
+		<style type="text/css">
+			#tabs {
+				display: none;
+			}
+
+			h1 {
+				display: block;
+			}
+		</style>
+	</noscript>
+
 	<body onload="init()">
+
 	<div id="header">
 		Ben Paulson
 	</div>
+
 	<ul id="tabs">
 		<li><a href="#about" onclick="showTab()">About</a></li>
 		<li><a href="#work" onclick="showTab()">Work</a></li>
@@ -21,10 +34,12 @@
 
 	<div id="container">
 		<div class="tabContent" id="about">
+		<h1>About<hr></h1>
+
 			<p>Hi there, I'm Ben, a guy that loves to play video games and develop things. I'm currently working as a Techranger at the Center for Distributed Learning at the University of Central Florida. I was born in South Carolina but was primarily raised in central Florida. As much as I love playing games I also develope maps and websites based on them.</p>
 
 			<h2>Hobbies:</h2>
-			I love creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.
+			I lnove creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.
 
 			<h2>Primary Games:</h2>
 			I've played well over 200 games in my life, ranging from first person shooters, to strategy, and even massively multiplayer online games. Here are only a few that I've played and developed either a couple maps or a fansite for:
@@ -40,6 +55,8 @@
 		</div>
 
 		<div class="tabContent" id="work">
+		<h1>Works<hr></h1>
+
 			Here are a few samples of my work:<br />
 
 		<?php
@@ -58,6 +75,7 @@
 		</div>
 
 		<div class="tabContent" id="contact">
+		<h1>Contact<hr></h1>
 			<form action="" method="post" enctype="text/plan" id="emailForm" onsubmit="validateForm()">
 			<input type="text" placeholder="First Name" name="FirstName"><input type="text" placeholder="Last Name" name="LastName"><input type="text" placeholder="Email Address" name="Email"><br/>
 			<textarea rows="12" cols="55"></textarea><br/>
