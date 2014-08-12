@@ -41,7 +41,7 @@ div.tabContent { margin: 0 20% 0 20%; }
 div.tabContent.hide { display: none; }
 div.tabContent a { font-size: 15px; font-family: custm_bit;}
 
-ul { list-style-type: square; }
+li { list-style-type: square; text-align: left; }
 
 div.footer { text-align: center; padding-top: 15px;}
 
@@ -175,16 +175,15 @@ form textarea {
 }
 
 #errorBox {
-	opacity: 0;
+	margin: auto;
+	width: 400px;
+	display: none;
 	padding: 0;
-}
-
-#errorBox li {
-
-	text-align: left;
 }
 
 #errorBox b {
 	color: red;
 	font-size: 30px; font-family: custm_bit;
 }
+
+#errorBoxPHP

@@ -36,10 +36,10 @@
 		<div class="tabContent" id="about">
 		<h1>About<hr></h1>
 
-			<p>Hi there, I'm Ben, a guy that loves to play video games and develop things. I'm currently working as a Techranger at the Center for Distributed Learning at the University of Central Florida. I was born in South Carolina but was primarily raised in central Florida. As much as I love playing games I also develope maps and websites based on them.</p>
+			<p>Hi there, I'm Ben, a guy that loves to play video games and develop things. I'm currently working as a Techranger at the Center for Distributed Learning at the University of Central Florida. I was born in South Carolina but was primarily raised in central Florida. As much as I love playing games I also develop maps and websites based on them.</p>
 
 			<h2>Hobbies:</h2>
-			I lnove creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.
+			I love creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.
 
 			<h2>Primary Games:</h2>
 			I've played well over 200 games in my life, ranging from first person shooters, to strategy, and even massively multiplayer online games. Here are only a few that I've played and developed either a couple maps or a fansite for:
@@ -77,7 +77,7 @@
 		<div class="tabContent" id="contact">
 		<h1>Contact<hr></h1>
 
-			<form action="#contact" method="post" id="emailForm" onsubmit="return validateForm()">
+			<form action="#contact" method="post" id="emailForm" onsubmit="return validateForm()" onreset="return errorMsgReset()">
 			
 			<div class="formBox">
 				<label for="formName">Name</label>
@@ -91,10 +91,6 @@
 				<label for="formEmail">E-Mail</label>
 				<input type="text" placeholder="E-Mail" name="formEmail" id="formEmail">
 			</div><br>
-
-			<div id="errorBox">
-				<b>Errors</b><p id="errorMsg">Test</p>
-			</div><br>
 			
 			<div class="formBox">
 				<label for="formMessage">Message</label>
@@ -105,12 +101,16 @@
 				<input type="submit" name="submit" value="Submit" class="button">|<input type="reset" name="reset" value="Reset" class="button">
 			</form>
 
+			<div id="errorBox">
+				<b>Errors</b><p id="errorMsg">Test</p>
+			</div><br>
+
 			<?php include 'scripts/main.php' ?>
 
 		</div>
 	</div>
 	
-	<div class="footer"><a href=""><img src="images/gh-icon.png" /></a> <a href=""><img src="images/fb-icon.png" /></a></div>
+	<div class="footer"><a href="https://github.com/Xianith"><img src="images/gh-icon.png" /></a> <a href=""><img src="images/fb-icon.png" /></a></div>
 
 	<?php
 			foreach($images as $img) {

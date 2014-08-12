@@ -90,9 +90,11 @@ function validateForm() {
     name = document.getElementById("formName").value;
     subject = document.getElementById("formSubject").value;
 
-    if (eValid.test(email) != true || email == "") { errorMessage("email"); return false; }
-    if (nValid.test(name) != true || name == "") { errorMessage("name"); return false; }
-    if (sValid.test(subject) != true || subject == "") { errorMessage("subject"); return false; }
+    if (eValid.test(email) != true || email == "") { errorMessage("email"); ++eCount; }
+    if (nValid.test(name) != true || name == "") { errorMessage("name"); ++eCount; }
+    if (sValid.test(subject) != true || subject == "") { errorMessage("subject"); ++eCount; }
+
+    if (eCount > 0) { return false; }
 }
 
 function errorMessage( type ) {
@@ -117,7 +119,7 @@ function errorMessage( type ) {
       break;
   }
 
-  error.style.opacity=1;
+  error.style.display="block";
 
   errorMsg.innerHTML=message;
 }
@@ -126,6 +128,8 @@ function errorMsgReset() {
   var error = document.getElementById("errorBox");
 
   message = "";
+
+  error.style.display="none";
 
   document.getElementById("formName").style.border="1px solid black"
   document.getElementById("formSubject").style.border="1px solid black"

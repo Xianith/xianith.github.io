@@ -18,12 +18,13 @@
 		$message = htmlspecialchars($message);
 
 		mail("xianith@gmail.com",$subject,$message,"From: $name\n");
-		echo "Thank you for contacting me!";
+		echo '<div id="errorBox" style="display: block; text-align: center">
+			Thank you for contacting me!</ul>
+			</div>';
 		}
 
 		else {
-			echo '
-			<div id="errorBoxPHP" style="opacity: 1;">
+			echo '<div id="errorBox" style="display: block;">
 			<b>Errors</b><br><ul>'. $error .'</ul>
 			</div>
 			';
