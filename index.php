@@ -42,10 +42,10 @@
 			<p>Hi there, I'm Ben, a guy that loves to play video games and develop things. I'm currently working as a Techranger at the Center for Distributed Learning at the University of Central Florida. I was born in South Carolina but was primarily raised in central Florida. As much as I love playing games I also develop maps and websites based on them.</p>
 
 			<h3>Hobbies:</h3>
-			I love creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.
+			<p>I love creating things dedciated to video games such as maps, websites, or art assets. I also get invloved as a server hoster and host things either locally on my Windows machine or through my personal Linux (ubuntu) server.</p>
 
 			<h3>Primary Games:</h3>
-			I've played well over 200 games in my life, ranging from first person shooters, to strategy, and even massively multiplayer online games. Here are only a few that I've played and developed either a couple maps or a fansite for:
+			<p>I've played well over 200 games in my life, ranging from first person shooters, to strategy, and even massively multiplayer online games. Here are only a few that I've played and developed either a couple maps or a fansite for:</p>
 
 			<ul>
 				<li><a href="http://store.steampowered.com/sub/715/">Half Life Series</a></li>
@@ -62,7 +62,7 @@
 
 		<hr>
 
-			Here are a few samples of my work:<br>
+			<p>Here are a few samples of my work:</p><br>
 
 		<?php
 			$images = glob('./images/works/*.{jpg,gif,png}', GLOB_BRACE);
