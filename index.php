@@ -5,7 +5,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="all">
-	<script src="java/main.js"></script>
+	<script src="js/main.js"></script>
 	<title>Xianith</title>
 
 	<noscript>
