@@ -1,4 +1,4 @@
-# portfolio
-Personal portfolio
+# Personal Site
+Personal Site
 
-Original URL (From CDL days): tux.cdl.ucf.edu/~be026457/portfolio/
+Original URL (From Techranger days): tux.cdl.ucf.edu/~be026457/portfolio/
