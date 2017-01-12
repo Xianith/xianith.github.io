@@ -1,21 +1,11 @@
 var showCount = '100';
 
-    $(".show").click(function() {
-    	// console.log($(this));
-    	$(".show").each(function() {
-    		$(this).replaceWikth('<a href="#" class="show">'+ $(this).text() + '</a>')
-    	});
-
-    	console.log($(this).text());
-    	$(this).replaceWith('<b class="show">TUR'+ $(this).text() + '</b>');
-    });
-
       $.getJSON(
         "http://www.reddit.com/r/gamedeals/new/.json?jsonp=?",
         function foo(data)
         {
           $.each(
-            data.data.children.slice(0, 30), //showCounty -- How can we do more then 30?
+            data.data.children.slice(0, 25), //showCounty -- How can we do more then 30?
             function (i, post) {
             	var title = post.data.title
             	var platform = title.match(/\s*\[.*?\]\s*/g, '');
@@ -25,8 +15,6 @@ var showCount = '100';
             		discount = '';
             	}
 
-              console.log("FARTS");
-
             	var newtitle = newtitle.replace(/\s*\(.*?\)\s*/g, '');
 
             	var linkflair = '';
@@ -35,11 +23,11 @@ var showCount = '100';
             	}
 
             	if (post.data.thumbnail == 'nsfw') {
-            		$("#reddit-content").append( ' <b style="color:red; fonze-size:10px">'+ platform +' <a href="' + post.data.url + '">' + newtitle +'</a> '+ discount+'</b><br>');            
+            		$("#reddit-content").append(' <div class="thing"><p class="title"><a class="title old" href="' + post.data.url + '">' + newtitle +'</a></p></div><br></hr>');            
             	} else if (title.toLowerCase().indexOf("free") >= 0 ) {
-            		$("#reddit-content").append( ' <b style="color:green; font-size:20px" size="20px">'+ platform +' <a href="' + post.data.url + '">' + newtitle +'</a> '+ discount+'</b><br>');  
+            		$("#reddit-content").append(' <div class="thing"><p class="title"><a class="title free" href="' + post.data.url + '">' + newtitle +'</a></p></div><br></hr>');  
             	} else {
-                $("#reddit-content").append( platform +' <a href="' + post.data.url + '">' + newtitle +'</a> '+ discount+'<br>' );
+                $("#reddit-content").append(' <div class="thing"><p class="title"><a class="title" href="' + post.data.url + '">' + newtitle +'</a><div class="discount">' + discount +'</div></p></div><br></hr>' );
               }
               // $("#reddit-content").append( post.data.link_flair_text +' <a href="' + post.data.url + '">' + newtitle +'</a> '+ discount+'<br>' );
               // $("#reddit-content").append( '<br>' + post.data.url );
