@@ -43,7 +43,7 @@ a:hover {
         0 0 40px #00A2FF,
         0 0 70px #00A2FF;	
 }
-a.selected { color: #ff9a00;}
+a.selected { color: #ff9a00; pointer-events: none;}
 
 ul#tabs { text-align: center; margin: 10px 0 10px 0; padding: 0; list-style-type: none; font-size: 40px; font-family: custm_bit; }
 ul#tabs li { display: inline; } 
