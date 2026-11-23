@@ -5,10 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Xianith: games, game tools, and stuff for friends.">
 		<meta name="theme-color" content="#0d0221">
-		<link rel="stylesheet" href="css/main.css?v=3">
+		<link rel="stylesheet" href="css/main.css?v=4">
 		<link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
-		<script src="js/main.js?v=3" defer></script>
-		<script src="js/hero.js?v=3" defer></script>
+		<script src="js/main.js?v=4" defer></script>
+		<script src="js/hero.js?v=4" defer></script>
 		<title>Xianith</title>
 	</head>
 
@@ -37,22 +37,44 @@
 
 			<p class="lead">I'm Ben, I play video games and I know things. Throughout the years I've picked up a wealth of knowledge that makes me pretty efficent at most technical tasks. Passion is in development.</p>
 
-			<h3 class="group">Skills I've acquired</h3>
-			<ul class="chips">
-				<li class="hot">HTML</li>
-				<li class="hot">CSS</li>
-				<li>PHP</li>
-				<li>Git</li>
-				<li>Cron</li>
-				<li class="hot">MySQL / PostgreSQL</li>
-				<li>Server hosting via Linux / Windows servers</li>
-				<li>Modx / Wordpress setup and customization</li>
-				<li>Setting up React and Webpack</li>
-				<li>Worked with APIs (reddit, Google, Discord)</li>
-				<li>C# Plugin development</li>
-				<li>Python script development</li>
-				<li>Community hosting through Steam groups / Discord</li>
-				<li>Editing gamepedias (wikis) / developing scripts and templates for them</li>
+			<h3 class="group">Written by hand</h3>
+			<p class="muted">Skills I've acquired the old way, typing it all out myself.</p>
+			<ul class="skills">
+				<li><b>HTML / CSS</b><span>Every site since 2013</span></li>
+				<li><b>PHP</b><span>Drinkin Outa Cups, Loafshack</span></li>
+				<li><b>JavaScript</b><span>ScavCo</span></li>
+				<li><b>C# Plugin development</b><span>Rust server plugins</span></li>
+				<li><b>MySQL / PostgreSQL</b><span>Drinkin Outa Cups, Rusty Dallas player stats</span></li>
+				<li><b>Python script development</b></li>
+				<li><b>Git</b></li>
+				<li><b>Cron</b></li>
+				<li><b>Server hosting via Linux / Windows servers</b><span>Game servers, community sites</span></li>
+				<li><b>Modx / Wordpress setup and customization</b></li>
+				<li><b>Setting up React and Webpack</b></li>
+				<li><b>Worked with APIs (reddit, Google, Discord)</b><span>Deals page, Rusty Dallas Discord bot</span></li>
+				<li><b>Community hosting through Steam groups / Discord</b><span>Drinkin Outa Cups</span></li>
+				<li><b>Editing gamepedias (wikis) / developing scripts and templates for them</b></li>
+			</ul>
+
+			<h3 class="group">Built with AI <span class="tag vibe">Vibe coded</span></h3>
+			<p class="muted">Picked up in 2026 by building things with AI writing most of the code from my prompts. I know how these fit together and how to ship them, but I didn't hand-write them.</p>
+			<ul class="skills vibed">
+				<li><b>Three.js / WebGL</b><span>Origin Story</span></li>
+				<li><b>Rust + Bevy (WebAssembly)</b><span>Fat Cat</span></li>
+				<li><b>Realtime multiplayer over WebSockets</b><span>Origin Story, Fat Cat, COBALT</span></li>
+				<li><b>TypeScript, React, Vite</b><span>WoW Tools</span></li>
+				<li><b>Node.js (Fastify, Express)</b><span>WoW Tools, COBALT</span></li>
+				<li><b>PostgreSQL + Prisma, Redis, SQLite, MySQL</b><span>WoW Tools, COBALT, Origin Story</span></li>
+				<li><b>Docker, nginx</b><span>WoW Tools, Origin Story</span></li>
+				<li><b>Discord bots and Discord login</b><span>COBALT, WoW Tools, Origin Story, BlizzCon Photos</span></li>
+				<li><b>Lua (WoW addons)</b><span>WebLoadouts, ProfKnowledge</span></li>
+				<li><b>Web scraping (Playwright, Cheerio)</b><span>WoW Tools</span></li>
+				<li><b>Claude API</b><span>COBALT's Cobalt Search</span></li>
+				<li><b>Rust+ companion API</b><span>COBALT</span></li>
+				<li><b>Stream Deck plugin, browser extension</b><span>COBALT</span></li>
+				<li><b>Blender scripting in Python</b><span>Origin Story</span></li>
+				<li><b>Leaflet maps</b><span>Loafshack Trips</span></li>
+				<li><b>Pixel-art canvas animation</b><span>This site's header</span></li>
 			</ul>
 		</section>
 
@@ -63,6 +85,8 @@
 
 			<p>Catch me on Github: <a target="_blank" href="https://github.com/Xianith">github.com/Xianith</a></p>
 
+			<p class="muted legend"><span class="tag vibe">Vibe coded</span> means AI wrote most of the code from my prompts. <span class="tag hand">By hand</span> means I typed it myself.</p>
+
 			<h3 class="group">Games</h3>
 			<div class="grid">
 				<article class="card">
@@ -70,6 +94,7 @@
 					<div class="body">
 						<h4><a href="https://os.xianith.com" target="_blank">Origin Story</a></h4>
 						<p>A browser multiplayer action RPG. Open the book, fall into the world.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Three.js</li><li>WebGL</li><li>WebSockets</li><li>Node.js</li><li>MySQL</li><li>PHP</li><li>Discord bot</li></ul>
 						<div class="links"><a href="https://os.xianith.com" target="_blank">os.xianith.com</a><a href="https://github.com/Xianith/origin-story" target="_blank">GitHub</a></div>
 					</div>
 				</article>
@@ -79,6 +104,7 @@
 					<div class="body">
 						<h4><a href="https://fc.xianith.com" target="_blank">Fat Cat</a></h4>
 						<p>Rescue your princess, fatten theirs. A team-based brawler with cats, right in the browser.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Rust</li><li>Bevy</li><li>WebAssembly</li><li>Node.js</li><li>WebSockets</li></ul>
 						<div class="links"><a href="https://fc.xianith.com" target="_blank">fc.xianith.com</a></div>
 					</div>
 				</article>
@@ -91,6 +117,7 @@
 					<div class="body">
 						<h4><a href="https://rust.xianith.com" target="_blank">COBALT Technologies</a> <span class="tag">Invite only</span></h4>
 						<p>A Rust server companion: Cobalt Search answers anything about Rust, and a Rust+ team bot with a live web dashboard runs your base's switches, raid alarms, TC upkeep and live map.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Node.js</li><li>Express</li><li>SQLite</li><li>discord.js</li><li>Rust+ API</li><li>Claude API</li></ul>
 						<div class="links"><a href="https://rust.xianith.com" target="_blank">rust.xianith.com</a><a href="https://github.com/Xianith/cobalt-rust" target="_blank">Feedback</a></div>
 					</div>
 				</article>
@@ -100,6 +127,7 @@
 					<div class="body">
 						<h4><a href="https://wow.xianith.com" target="_blank">WoW Tools</a></h4>
 						<p>World of Warcraft helpers: Auction House price intelligence, guild profession tracking, and talent loadouts pulled from the big build sites.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>TypeScript</li><li>React</li><li>Fastify</li><li>Prisma</li><li>PostgreSQL</li><li>Redis</li><li>Docker</li></ul>
 						<div class="links"><a href="https://wow.xianith.com/gold" target="_blank">Gold</a><a href="https://wow.xianith.com/guild" target="_blank">Guild</a><a href="https://wow.xianith.com/webloadouts" target="_blank">WebLoadouts</a></div>
 					</div>
 				</article>
@@ -109,6 +137,7 @@
 					<div class="body">
 						<h4><a href="https://game.xianith.com" target="_blank">Game Servers</a></h4>
 						<p>Live status and player counts for our dedicated servers, plus downloadable worlds from archived ones.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Server hosting</li><li>Live status</li></ul>
 						<div class="links"><a href="https://game.xianith.com" target="_blank">game.xianith.com</a></div>
 					</div>
 				</article>
@@ -118,6 +147,7 @@
 					<div class="body">
 						<h4><a href="https://library.xianith.com" target="_blank">Steam Blockbuster</a></h4>
 						<p>Browse any Steam library like the shelves of an old video game rental store.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Steam library data</li><li>Pixel art</li></ul>
 						<div class="links"><a href="https://library.xianith.com" target="_blank">library.xianith.com</a></div>
 					</div>
 				</article>
@@ -129,6 +159,7 @@
 					<div class="body">
 						<h4><a href="https://github.com/Xianith/WebLoadouts" target="_blank">WebLoadouts</a> <span class="tag cyan">Addon</span></h4>
 						<p>Import talent builds from Wowhead, Icy Veins and Archon straight into the in-game talent loadout dropdown.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Lua</li><li>WoW addon API</li></ul>
 						<div class="links"><a href="https://github.com/Xianith/WebLoadouts" target="_blank">GitHub</a></div>
 					</div>
 				</article>
@@ -137,6 +168,7 @@
 					<div class="body">
 						<h4><a href="https://github.com/Xianith/ProfKnowledge" target="_blank">ProfKnowledge</a> <span class="tag cyan">Addon</span></h4>
 						<p>Track profession knowledge across all of your characters.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Lua</li><li>WoW addon API</li></ul>
 						<div class="links"><a href="https://github.com/Xianith/ProfKnowledge" target="_blank">GitHub</a></div>
 					</div>
 				</article>
@@ -149,6 +181,7 @@
 					<div class="body">
 						<h4><a href="https://xianith.com/warped-favs/" target="_blank">Warped Favs</a></h4>
 						<p>My Warped Tour Orlando 2026 schedule: the lineup, set times, and the bands I starred.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>HTML</li><li>JavaScript</li><li>Python</li></ul>
 						<div class="links"><a href="https://xianith.com/warped-favs/" target="_blank">xianith.com/warped-favs</a></div>
 					</div>
 				</article>
@@ -158,6 +191,7 @@
 					<div class="body">
 						<h4><a href="https://xianith.com/fanproject/" target="_blank">Fan Project Cards</a></h4>
 						<p>Plan a crowd moment at a show. Share one QR code and everyone holds up the same card.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>JavaScript</li><li>CSS</li><li>QR codes</li></ul>
 						<div class="links"><a href="https://xianith.com/fanproject/" target="_blank">xianith.com/fanproject</a></div>
 					</div>
 				</article>
@@ -167,6 +201,7 @@
 					<div class="body">
 						<h4><a href="https://blizzcon.xianith.com" target="_blank">BlizzCon Photos</a> <span class="tag">Discord only</span></h4>
 						<p>Our photos from the con, in order, with everyone tagged.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>Discord login</li><li>Photo gallery</li></ul>
 						<div class="links"><a href="https://blizzcon.xianith.com" target="_blank">blizzcon.xianith.com</a></div>
 					</div>
 				</article>
@@ -178,6 +213,7 @@
 					<div class="body">
 						<h4><a href="https://loafshack.com" target="_blank">loafshack.com</a> <span class="tag">Coming soon</span></h4>
 						<p>Just a placeholder for now. More soon.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li></ul>
 						<div class="links"><a href="https://loafshack.com" target="_blank">loafshack.com</a></div>
 					</div>
 				</article>
@@ -186,6 +222,7 @@
 					<div class="body">
 						<h4><a href="https://loafshack.com/trips" target="_blank">Loafshack Trips</a> <span class="tag">Building now</span></h4>
 						<p>A timeline map: step through each stop and follow it across the map. Being built now.</p>
+						<ul class="stack"><li class="by vibe">Vibe coded</li><li>JavaScript</li><li>Leaflet</li></ul>
 						<div class="links"><a href="https://loafshack.com/trips" target="_blank">loafshack.com/trips</a></div>
 					</div>
 				</article>
@@ -197,6 +234,7 @@
 					<div class="body">
 						<h4>Rusty Dallas <span class="tag gray">Archived</span></h4>
 						<p>Rust (video game, not language) community site: <s>rustydallas.net</s></p>
+						<ul class="stack"><li class="by hand">By hand</li><li>C#</li><li>JSON</li><li>Discord bot</li></ul>
 						<details>
 							<summary>Contributions</summary>
 							<ul>
@@ -212,6 +250,7 @@
 					<div class="body">
 						<h4><a target="_blank" href="https://github.com/Xianith/drinkinoutacups">Drinkin Outa Cups</a> <span class="tag gray">Archived</span></h4>
 						<p>Gaming community hub, plus its Rust site <s>drinkinoutacups.com/rust</s>. Sole developer.</p>
+						<ul class="stack"><li class="by hand">By hand</li><li>PHP</li><li>CSS</li><li>JavaScript</li></ul>
 						<div class="links"><a target="_blank" href="https://github.com/Xianith/drinkinoutacups">GitHub</a></div>
 					</div>
 				</article>
@@ -220,6 +259,7 @@
 					<div class="body">
 						<h4><a target="_blank" href="https://github.com/Xianith/ScavCo">ScavCo</a> <span class="tag gray">Archived</span></h4>
 						<p>Escape from Tarkov hub, formerly scav.co. Sole developer.</p>
+						<ul class="stack"><li class="by hand">By hand</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
 						<div class="links"><a target="_blank" href="https://github.com/Xianith/ScavCo">GitHub</a></div>
 					</div>
 				</article>

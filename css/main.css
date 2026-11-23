@@ -234,6 +234,24 @@ ul.chips li {
 }
 ul.chips li.hot { border-color: var(--pink-soft); color: #ffd6ef; box-shadow: 3px 3px 0 var(--pink); }
 
+/* Skills with the projects they came from */
+ul.skills { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); margin: 12px 0 0; padding: 0; list-style: none; }
+ul.skills li { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; background: rgba(185, 103, 255, .1); border: 1px solid var(--line); border-left: 3px solid var(--cyan); }
+ul.skills.vibed li { border-left-color: var(--pink-soft); }
+ul.skills b { font-weight: 600; font-size: 14px; }
+ul.skills span { font-size: 12px; color: var(--muted); }
+
+.tag.vibe, ul.stack li.vibe { color: var(--night); background: var(--pink-soft); border-color: var(--pink-soft); }
+.tag.hand, ul.stack li.hand { color: var(--night); background: var(--cyan); border-color: var(--cyan); }
+h3.group .tag { text-shadow: none; position: relative; top: -3px; }
+.legend { font-size: 13px; }
+.legend .tag { margin: 0 4px 0 0; }
+
+/* Tech used, shown on each card */
+ul.stack { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 0; padding: 0; list-style: none; }
+ul.stack li { padding: 3px 6px 2px; font: 13px/1 var(--pixel); color: var(--muted); border: 1px solid var(--line); }
+ul.stack li.by { font-size: 13px; }
+
 /* ---------- Project cards ---------- */
 
 .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
