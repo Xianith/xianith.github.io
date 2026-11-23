@@ -116,6 +116,26 @@
 	hero.appendChild(plate);
 	var SX = 1, SY = 1;
 
+	// The plate changes design every few seconds; the letters are always XANIT.
+	// Each is [background, text, inner border, outer edge].
+	var PLATES = [
+		['#ffd319', '#0d0221', '#0d0221', '#ffd319'],                                                              // classic yellow
+		['radial-gradient(circle at 50% 55%, #ff9a2e 0 24%, transparent 26%), #fff', '#0b5d2a', '#0b5d2a', '#fff'],   // Florida: green on white, orange in the middle
+		['linear-gradient(90deg, #a3262a 0 9%, #d9c58f 9% 91%, #1f3a5f 91%)', '#3d4a1e', '#3d4a1e', '#d9c58f'],       // scout: khaki and olive, red and navy ends
+		['linear-gradient(#ff2a6d, #ff8c3a)', '#fff', '#fff', '#ff2a6d'],                                           // sunset
+		['#0d0221', '#01cdfe', '#01cdfe', '#0d0221']                                                                // night neon
+	];
+	var plateNow = -1;
+	function setPlate(i) {
+		if (i === plateNow) return;
+		plateNow = i;
+		plate.style.background = PLATES[i][0];
+		plate.style.color = PLATES[i][1];
+		plate.style.borderColor = PLATES[i][2];
+		plate.style.boxShadow = '0 0 0 1px ' + PLATES[i][3];
+	}
+	setPlate(still ? Math.floor(Math.random() * PLATES.length) : 0);
+
 	function drawCar(x, y, lean, flick) {
 		for (var r = 0; r < CAR.length; r++) {
 			var shift = r < 3 ? lean : 0;   // the cabin leans into the turn
@@ -179,6 +199,7 @@
 		ctx.fillStyle = '#b967ff';
 		for (x = 2; x < 26; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + 12, 1, 1);
 		drawCar(cx, cyTop, lean, Math.floor(t * 12) & 1);
+		if (!still) setPlate(Math.floor(t / 7) % PLATES.length);
 		plate.style.transform = 'translate(' + ((cx + 8) * SX) + 'px,' + ((cyTop + 7) * SY) + 'px)';
 	}
 
