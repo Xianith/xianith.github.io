@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<!-- Font Awesome Style Sheet -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
-		<link rel="stylesheet" href="css/main.css" type="text/css" media="all">
-		<script src="js/main.js"></script>
-		<link rel="icon" href="imgs/favicon.ico">
-		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Xianith: games, game tools, and stuff for friends.">
+		<meta name="theme-color" content="#0d0221">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
+		<script src="js/main.js" defer></script>
 		<title>Xianith</title>
 	</head>
 
-	<body onload="init()">
+	<body>
 
-	<div id="header">
+	<header class="hero">
+		<div class="stars"></div>
+		<div class="sun"></div>
+		<div class="floor"></div>
 		<h1>Xianith</h1>
-	</div>
+		<p class="tagline">games - tools - stuff</p>
+	</header>
 
-	<ul id="tabs">
-		<li><a href="#about" onclick="showTab()">Me</a></li>
-		<li><a href="#work" onclick="showTab()">Work</a></li>
-		<li><a href="#contact" onclick="showTab()">Contact</a></li>
-	</ul>
+	<nav class="tabs" aria-label="Sections">
+		<ul>
+			<li><a href="#about">Me</a></li>
+			<li><a href="#work">Work</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
 
-	<div id="container">
-		<section class="tabContent" id="about">
-			<hr>
+	<main>
+		<section class="tabContent narrow" id="tab-about">
 			<h2>Who I am</h2>
 
-			<p>I'm Ben, I play video games and I know things. Throughout the years I've picked up a wealth of knowledge that makes me pretty efficent at most technical tasks. Passion is in development.</p>
+			<p class="lead">I'm Ben, I play video games and I know things. Throughout the years I've picked up a wealth of knowledge that makes me pretty efficent at most technical tasks. Passion is in development.</p>
 
-			<b>Skills I've acquired:</b><ul>
-				<li level="5">HTML</li>
-				<li level="5">CSS</li>
+			<h3 class="group">Skills I've acquired</h3>
+			<ul class="chips">
+				<li class="hot">HTML</li>
+				<li class="hot">CSS</li>
 				<li>PHP</li>
 				<li>Git</li>
 				<li>Cron</li>
-				<li level="4">MySQL / PostgreSQL</li>
+				<li class="hot">MySQL / PostgreSQL</li>
 				<li>Server hosting via Linux / Windows servers</li>
 				<li>Modx / Wordpress setup and customization</li>
-				<li>Setting up React  and Webpack</li>
+				<li>Setting up React and Webpack</li>
 				<li>Worked with APIs (reddit, Google, Discord)</li>
 				<li>C# Plugin development</li>
 				<li>Python script development</li>
@@ -48,45 +54,191 @@
 			</ul>
 		</section>
 
-		<section class="tabContent hide" id="work">
-			<hr>
+		<section class="tabContent" id="tab-work">
 			<h2>Projects I've done</h2>
 
 			<p>I tend to keep my mistakes and personal accomplishments hidden from the public eye. I've been working on keeping a record through Git when possible. A lot of my mistakes die within Sublime.</p>
 
-			<p>Catch me on Github: <a target="_blank" href="https://github.com/Xianith">https://github.com/Xianith</a></p>
+			<p>Catch me on Github: <a target="_blank" href="https://github.com/Xianith">github.com/Xianith</a></p>
 
-			<p><b>What I'm working on now:</b> <a href="projects/">xianith.com/projects</a></p>
+			<h3 class="group">Games</h3>
+			<div class="grid">
+				<article class="card">
+					<a class="shot" href="https://os.xianith.com" target="_blank"><img src="imgs/projects/origin-story.jpg" alt="Origin Story title screen" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://os.xianith.com" target="_blank">Origin Story</a></h4>
+						<p>A browser multiplayer action RPG. Open the book, fall into the world.</p>
+						<div class="links"><a href="https://os.xianith.com" target="_blank">os.xianith.com</a><a href="https://github.com/Xianith/origin-story" target="_blank">GitHub</a></div>
+					</div>
+				</article>
 
-			<ul>
-				<li class="plus icon" onclick="showWorkInfo(this)">Rust (video game, not language) current site: <strike>http://rustydallas.net</strike>
-				<div class="contribution" title="Click to see contributions" style="display: none;"><b>Contributions:</b>
-					<ul style="padding-left: 15px;">
-					<li>Made several scripts and database connections to read from json files to display player stats.</li>
-					<li>Developed a discord bot to display server information and inform users of changes.</li>
-					<li>Modified / created several in game c# plugins.</li>
-				</ul></div></li>
-				<li class="dev icon" title="Sole Developer">(Archived) Gaming community hub: <a target="_blank" href="https://github.com/Xianith/drinkinoutacups">http://drinkinoutacups.com</a></li>
-				<li class="old icon" title="Sole Developer">(Archived) Rust site: <strike>http://drinkinoutacups.com/rust</strike></li>
-				<li class="old icon" title="Sole Developer">(Archived) Escape from Tarkov hub: <a target="_blank" href="https://github.com/Xianith/ScavCo">http://scav.co</a></li>
-			</ul>
+				<article class="card">
+					<a class="shot" href="https://fc.xianith.com" target="_blank"><img src="imgs/projects/fat-cat.jpg" alt="Fat Cat lobby screen" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://fc.xianith.com" target="_blank">Fat Cat</a></h4>
+						<p>Rescue your princess, fatten theirs. A team-based brawler with cats, right in the browser.</p>
+						<div class="links"><a href="https://fc.xianith.com" target="_blank">fc.xianith.com</a></div>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="group">Game tools</h3>
+			<div class="grid">
+				<article class="card">
+					<a class="shot" href="https://rust.xianith.com" target="_blank"><img src="imgs/projects/cobalt.jpg" alt="COBALT Technologies home page" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://rust.xianith.com" target="_blank">COBALT Technologies</a> <span class="tag">Invite only</span></h4>
+						<p>A Rust server companion: Cobalt Search answers anything about Rust, and a Rust+ team bot with a live web dashboard runs your base's switches, raid alarms, TC upkeep and live map.</p>
+						<div class="links"><a href="https://rust.xianith.com" target="_blank">rust.xianith.com</a><a href="https://github.com/Xianith/cobalt-rust" target="_blank">Feedback</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="shot" href="https://wow.xianith.com" target="_blank"><img src="imgs/projects/wow-tools.jpg" alt="WoW Tools profession leaderboard" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://wow.xianith.com" target="_blank">WoW Tools</a></h4>
+						<p>World of Warcraft helpers: Auction House price intelligence, guild profession tracking, and talent loadouts pulled from the big build sites.</p>
+						<div class="links"><a href="https://wow.xianith.com/gold" target="_blank">Gold</a><a href="https://wow.xianith.com/guild" target="_blank">Guild</a><a href="https://wow.xianith.com/webloadouts" target="_blank">WebLoadouts</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="shot" href="https://game.xianith.com" target="_blank"><img src="imgs/projects/game-servers.jpg" alt="Game server status page" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://game.xianith.com" target="_blank">Game Servers</a></h4>
+						<p>Live status and player counts for our dedicated servers, plus downloadable worlds from archived ones.</p>
+						<div class="links"><a href="https://game.xianith.com" target="_blank">game.xianith.com</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="shot" href="https://library.xianith.com" target="_blank"><img src="imgs/projects/steam-blockbuster.jpg" alt="Steam Blockbuster storefront" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://library.xianith.com" target="_blank">Steam Blockbuster</a></h4>
+						<p>Browse any Steam library like the shelves of an old video game rental store.</p>
+						<div class="links"><a href="https://library.xianith.com" target="_blank">library.xianith.com</a></div>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="group">WoW addons</h3>
+			<div class="grid">
+				<article class="card">
+					<div class="body">
+						<h4><a href="https://github.com/Xianith/WebLoadouts" target="_blank">WebLoadouts</a> <span class="tag cyan">Addon</span></h4>
+						<p>Import talent builds from Wowhead, Icy Veins and Archon straight into the in-game talent loadout dropdown.</p>
+						<div class="links"><a href="https://github.com/Xianith/WebLoadouts" target="_blank">GitHub</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<div class="body">
+						<h4><a href="https://github.com/Xianith/ProfKnowledge" target="_blank">ProfKnowledge</a> <span class="tag cyan">Addon</span></h4>
+						<p>Track profession knowledge across all of your characters.</p>
+						<div class="links"><a href="https://github.com/Xianith/ProfKnowledge" target="_blank">GitHub</a></div>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="group">Events &amp; fun</h3>
+			<div class="grid">
+				<article class="card">
+					<a class="shot" href="https://xianith.com/warped-favs/" target="_blank"><img src="imgs/projects/warped-favs.jpg" alt="Warped Orlando 2026 schedule" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://xianith.com/warped-favs/" target="_blank">Warped Favs</a></h4>
+						<p>My Warped Tour Orlando 2026 schedule: the lineup, set times, and the bands I starred.</p>
+						<div class="links"><a href="https://xianith.com/warped-favs/" target="_blank">xianith.com/warped-favs</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="shot" href="https://xianith.com/fanproject/" target="_blank"><img src="imgs/projects/fanproject.jpg" alt="Fan Project Cards builder" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://xianith.com/fanproject/" target="_blank">Fan Project Cards</a></h4>
+						<p>Plan a crowd moment at a show. Share one QR code and everyone holds up the same card.</p>
+						<div class="links"><a href="https://xianith.com/fanproject/" target="_blank">xianith.com/fanproject</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="shot" href="https://blizzcon.xianith.com" target="_blank"><img src="imgs/projects/blizzcon.jpg" alt="BlizzCon Photos sign-in" loading="lazy"></a>
+					<div class="body">
+						<h4><a href="https://blizzcon.xianith.com" target="_blank">BlizzCon Photos</a> <span class="tag">Discord only</span></h4>
+						<p>Our photos from the con, in order, with everyone tagged.</p>
+						<div class="links"><a href="https://blizzcon.xianith.com" target="_blank">blizzcon.xianith.com</a></div>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="group">In progress</h3>
+			<div class="grid">
+				<article class="card">
+					<div class="body">
+						<h4><a href="https://loafshack.com" target="_blank">loafshack.com</a> <span class="tag">Coming soon</span></h4>
+						<p>Just a placeholder for now. More soon.</p>
+						<div class="links"><a href="https://loafshack.com" target="_blank">loafshack.com</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<div class="body">
+						<h4><a href="https://loafshack.com/trips" target="_blank">Loafshack Trips</a> <span class="tag">Building now</span></h4>
+						<p>A timeline map: step through each stop and follow it across the map. Being built now.</p>
+						<div class="links"><a href="https://loafshack.com/trips" target="_blank">loafshack.com/trips</a></div>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="group">Archive</h3>
+			<div class="grid">
+				<article class="card archived">
+					<div class="body">
+						<h4>Rusty Dallas <span class="tag gray">Archived</span></h4>
+						<p>Rust (video game, not language) community site: <s>rustydallas.net</s></p>
+						<details>
+							<summary>Contributions</summary>
+							<ul>
+								<li>Made several scripts and database connections to read from json files to display player stats.</li>
+								<li>Developed a discord bot to display server information and inform users of changes.</li>
+								<li>Modified / created several in game c# plugins.</li>
+							</ul>
+						</details>
+					</div>
+				</article>
+
+				<article class="card archived">
+					<div class="body">
+						<h4><a target="_blank" href="https://github.com/Xianith/drinkinoutacups">Drinkin Outa Cups</a> <span class="tag gray">Archived</span></h4>
+						<p>Gaming community hub, plus its Rust site <s>drinkinoutacups.com/rust</s>. Sole developer.</p>
+						<div class="links"><a target="_blank" href="https://github.com/Xianith/drinkinoutacups">GitHub</a></div>
+					</div>
+				</article>
+
+				<article class="card archived">
+					<div class="body">
+						<h4><a target="_blank" href="https://github.com/Xianith/ScavCo">ScavCo</a> <span class="tag gray">Archived</span></h4>
+						<p>Escape from Tarkov hub, formerly scav.co. Sole developer.</p>
+						<div class="links"><a target="_blank" href="https://github.com/Xianith/ScavCo">GitHub</a></div>
+					</div>
+				</article>
+			</div>
 		</section>
 
-		<section class="tabContent hide" id="contact">
-			<hr>
+		<section class="tabContent narrow" id="tab-contact">
 			<h2>How to reach me</h2>
 
 			<p>If I'm not on Steam, I'm on the Drinkin Outa Cups Discord. Anything professional, please email me.</p>
 
-			<ul>
-				<li class="email icon">- <a href="mailto:xianith@gmail.com?Subject=Xianith.com%20-%20Contact%20Form">xianith@gmail.com</a></li>
-				<br>
-				<li><a target="_blank" href="https://twitch.tv/xianith">Twitch.tv - Xianith</a></li>
-				<li><a target="_blank" href="http://steamcommunity.com/id/xianith">Steam - Xianith</a></li>
-				<li><a target="_blank" href="http://drinkinoutacups.com/">Discord - Xianith</a></li>
+			<ul class="contact">
+				<li><a href="mailto:xianith@gmail.com?Subject=Xianith.com%20-%20Contact%20Form">Email <span>xianith@gmail.com</span></a></li>
+				<li><a target="_blank" href="https://twitch.tv/xianith">Twitch <span>xianith</span></a></li>
+				<li><a target="_blank" href="https://steamcommunity.com/id/xianith">Steam <span>xianith</span></a></li>
+				<li><a target="_blank" href="http://drinkinoutacups.com/">Discord <span>Xianith</span></a></li>
 			</ul>
 		</section>
-	</div>
+	</main>
+
+	<footer>xianith.com</footer>
+
 	</body>
 </html>
-
