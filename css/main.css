@@ -111,24 +111,42 @@ a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
 
 @keyframes drive { to { background-position: 0 64px; } }
 
-.hero h1 {
+/* Title sits on the horizon (top of .floor, 70% down the hero). It is drawn
+   twice: the copy above the horizon is clipped to the sky, the copy below is
+   clipped to the grid and shown in inverted colors. */
+.hero .title { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.hero .title.sky { clip-path: inset(0 0 30% 0); }
+.hero .title.ground { clip-path: inset(70% 0 0 0); }
+
+.hero .title > * {
 	position: absolute;
-	left: 0; right: 0; top: 14%;
+	left: 0; right: 0; top: 70%;
+	transform: translateY(-50%);
 	margin: 0;
 	text-align: center;
-	font: normal clamp(64px, 15vmin, 140px)/1 var(--pixel);
+	font: normal clamp(83px, 19.5vmin, 182px)/1 var(--pixel);
 	letter-spacing: .04em;
+}
+
+/* Above the horizon: dark ink against the bright sunset (like the 2023
+   black-on-white header) */
+.hero .title.sky > * {
+	color: var(--night);
+	filter: drop-shadow(3px 3px 0 var(--pink));
+}
+
+/* Below the horizon: inverted, bright chrome-to-neon against the dark grid */
+.hero .title.ground > * {
 	background: linear-gradient(#fff 0 40%, #ffd1f2 48%, var(--pink-soft) 60%, var(--cyan) 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 	filter: drop-shadow(3px 3px 0 var(--pink)) drop-shadow(0 0 14px rgba(1, 205, 254, .6));
-	z-index: 2;
 }
 
 .hero p.tagline {
 	position: absolute;
-	left: 0; right: 0; top: calc(14% + clamp(64px, 15vmin, 140px) + 6px);
+	left: 0; right: 0; top: 9%;
 	margin: 0;
 	text-align: center;
 	font: 20px/1 var(--pixel);
