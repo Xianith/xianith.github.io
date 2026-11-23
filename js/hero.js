@@ -104,14 +104,16 @@
 	];
 	var INK = { k: '#0d0221', s: '#f3e9ff', d: '#b9a6e0', w: '#1b3f7a', W: '#7fe9ff', T: '#ff2a6d', t: '#ffe45c', y: '#ffd319', g: '#3a2a5c', e: '#01cdfe' };
 
-	var PLATE = 'XANIT';
-	var FONT = {
-		X: ['x.x', '.x.', 'x.x'],
-		A: ['.x.', 'xxx', 'x.x'],
-		N: ['xx.', 'x.x', 'x.x'],
-		I: ['xxx', '.x.', 'xxx'],
-		T: ['xxx', '.x.', '.x.']
-	};
+	// License plate: real text laid over the car, so it stays sharp and readable
+	// while everything else is chunky pixels. It covers sprite columns 7-20, rows 6-9.
+	var plate = document.createElement('div');
+	plate.textContent = 'XANIT';
+	plate.setAttribute('aria-hidden', 'true');
+	plate.style.cssText = 'position:absolute;left:0;top:0;z-index:1;display:flex;align-items:center;justify-content:center;' +
+		'background:#ffd319;color:#0d0221;font-family:Arial,Helvetica,sans-serif;font-weight:700;line-height:1;' +
+		'letter-spacing:.06em;white-space:nowrap;pointer-events:none;will-change:transform';
+	hero.appendChild(plate);
+	var SX = 1, SY = 1;
 
 	function drawCar(x, y, lean, flick) {
 		for (var r = 0; r < CAR.length; r++) {
@@ -122,14 +124,6 @@
 				ctx.fillStyle = (ch === 'e' && flick) ? '#ff71ce' : INK[ch];
 				ctx.fillRect(x + c + shift, y + r, 1, 1);
 			}
-		}
-		// License plate: 3x3 pixel letters, the smallest that still read
-		var px = x + 4, py = y + 6, i, gr, gc;
-		ctx.fillStyle = '#ffd319';
-		ctx.fillRect(px, py, PLATE.length * 4 + 1, 5);
-		ctx.fillStyle = '#0d0221';
-		for (i = 0; i < PLATE.length; i++) for (gr = 0; gr < 3; gr++) for (gc = 0; gc < 3; gc++) {
-			if (FONT[PLATE.charAt(i)][gr].charAt(gc) === 'x') ctx.fillRect(px + 1 + i * 4 + gc, py + 1 + gr, 1, 1);
 		}
 	}
 
@@ -184,6 +178,7 @@
 		ctx.fillStyle = '#b967ff';
 		for (x = 2; x < 26; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + 12, 1, 1);
 		drawCar(cx, cyTop, lean, Math.floor(t * 12) & 1);
+		plate.style.transform = 'translate(' + ((cx + 7) * SX) + 'px,' + ((cyTop + 6) * SY) + 'px)';
 	}
 
 	function resize() {
@@ -193,6 +188,10 @@
 		canvas.width = W; canvas.height = H;
 		HZ = Math.round(H * 0.7); FH = H - HZ - 1; CX = Math.round(W / 2);
 		hero.style.setProperty('--hz', (HZ / H * 100) + '%');   // keeps the title split on the horizon
+		SX = box.width / W; SY = box.height / H;   // canvas pixels to screen pixels
+		plate.style.width = (14 * SX) + 'px';
+		plate.style.height = (4 * SY) + 'px';
+		plate.style.fontSize = (4 * SY * 0.78) + 'px';
 		buildBack();
 		if (still) frame(2000);
 	}
