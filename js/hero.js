@@ -7,6 +7,8 @@
 
 	var canvas = document.createElement('canvas');
 	canvas.className = 'scene';
+	// Sized here too, so a stale cached stylesheet can't leave it tiny in the corner
+	canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;image-rendering:pixelated';
 	canvas.setAttribute('aria-hidden', 'true');
 	hero.insertBefore(canvas, hero.firstChild);
 	hero.classList.add('has-scene');
