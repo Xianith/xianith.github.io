@@ -37,7 +37,7 @@ body {
 a { color: var(--cyan); text-decoration: none; transition: color .15s, text-shadow .15s; }
 a:hover, a:focus-visible {
 	color: var(--pink-soft);
-	text-shadow: 0 0 8px rgba(255, 42, 109, .8), 0 0 18px rgba(255, 42, 109, .5);
+	text-shadow: 2px 2px 0 rgba(255, 42, 109, .7);
 }
 a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
 
@@ -45,7 +45,7 @@ a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
 
 .hero {
 	position: relative;
-	height: clamp(250px, 44vh, 420px);
+	height: clamp(270px, 48vh, 460px);
 	overflow: hidden;
 	background: linear-gradient(#12032b 0%, #2d0b5a 30%, #7a1a8c 52%, #e0306f 64%, #ff8a5c 70%);
 }
@@ -111,16 +111,26 @@ a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
 
 @keyframes drive { to { background-position: 0 64px; } }
 
+/* The pixel-art scene (js/hero.js) replaces the CSS sun and grid */
+.hero canvas.scene {
+	position: absolute; inset: 0;
+	width: 100%; height: 100%;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+.hero.has-scene .stars, .hero.has-scene .sun, .hero.has-scene .floor { display: none; }
+
 /* Title sits on the horizon (top of .floor, 70% down the hero). It is drawn
    twice: the copy above the horizon is clipped to the sky, the copy below is
    clipped to the grid and shown in inverted colors. */
 .hero .title { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.hero .title.sky { clip-path: inset(0 0 30% 0); }
-.hero .title.ground { clip-path: inset(70% 0 0 0); }
+.hero .title.sky { clip-path: inset(0 0 calc(100% - var(--hz, 70%)) 0); }
+.hero .title.ground { clip-path: inset(var(--hz, 70%) 0 0 0); }
 
 .hero .title > * {
 	position: absolute;
-	left: 0; right: 0; top: 70%;
+	left: 0; right: 0; top: var(--hz, 70%);
 	transform: translateY(-50%);
 	margin: 0;
 	text-align: center;
@@ -132,16 +142,16 @@ a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
    black-on-white header) */
 .hero .title.sky > * {
 	color: var(--night);
-	filter: drop-shadow(3px 3px 0 var(--pink));
+	filter: drop-shadow(4px 4px 0 var(--pink));
 }
 
 /* Below the horizon: inverted, bright chrome-to-neon against the dark grid */
 .hero .title.ground > * {
-	background: linear-gradient(#fff 0 40%, #ffd1f2 48%, var(--pink-soft) 60%, var(--cyan) 100%);
+	background: linear-gradient(#fff 0 56%, #ffd1f2 56% 61%, var(--pink-soft) 61% 66%, var(--cyan) 66%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
-	filter: drop-shadow(3px 3px 0 var(--pink)) drop-shadow(0 0 14px rgba(1, 205, 254, .6));
+	filter: drop-shadow(4px 4px 0 var(--pink));
 }
 
 .hero p.tagline {
@@ -152,7 +162,7 @@ a:focus-visible { outline: 2px dashed var(--pink-soft); outline-offset: 3px; }
 	font: 20px/1 var(--pixel);
 	letter-spacing: .3em;
 	color: #ffe6f6;
-	text-shadow: 0 0 10px var(--pink);
+	text-shadow: 2px 2px 0 var(--pink);
 	z-index: 2;
 }
 
@@ -181,7 +191,7 @@ nav.tabs a {
 nav.tabs a.selected {
 	color: var(--pink-soft);
 	border-bottom-color: var(--pink);
-	text-shadow: 0 0 10px rgba(255, 42, 109, .9);
+	text-shadow: 2px 2px 0 rgba(255, 42, 109, .6);
 }
 
 /* ---------- Content ---------- */
@@ -196,7 +206,7 @@ main { padding: 28px 16px 40px; }
 	margin: 0 0 14px;
 	font: normal 40px/1.1 var(--pixel);
 	color: #fff;
-	text-shadow: 2px 2px 0 var(--pink), 0 0 16px rgba(1, 205, 254, .5);
+	text-shadow: 3px 3px 0 var(--pink);
 }
 
 .tabContent > p { color: var(--text); }
@@ -208,7 +218,7 @@ h3.group {
 	padding-bottom: 8px;
 	font: normal 28px/1 var(--pixel);
 	color: var(--sun);
-	text-shadow: 0 0 10px rgba(255, 211, 25, .45);
+	text-shadow: 2px 2px 0 rgba(255, 42, 109, .8);
 	border-bottom: 2px solid transparent;
 	border-image: linear-gradient(90deg, var(--pink), var(--purple), var(--cyan), transparent) 1;
 }
@@ -219,10 +229,10 @@ ul.chips li {
 	padding: 4px 12px;
 	font-size: 13px;
 	border: 1px solid var(--line);
-	border-radius: 999px;
+	border-radius: 0;
 	background: rgba(185, 103, 255, .1);
 }
-ul.chips li.hot { border-color: var(--pink-soft); color: #ffd6ef; box-shadow: 0 0 10px rgba(255, 113, 206, .3); }
+ul.chips li.hot { border-color: var(--pink-soft); color: #ffd6ef; box-shadow: 3px 3px 0 var(--pink); }
 
 /* ---------- Project cards ---------- */
 
@@ -233,14 +243,14 @@ ul.chips li.hot { border-color: var(--pink-soft); color: #ffd6ef; box-shadow: 0 
 	display: flex; flex-direction: column;
 	background: var(--panel);
 	border: 1px solid var(--line);
-	border-radius: 10px;
-	overflow: hidden;
+	border-radius: 0;
 	transition: transform .2s, border-color .2s, box-shadow .2s;
 }
 .card:hover {
 	transform: translateY(-3px);
 	border-color: var(--pink-soft);
-	box-shadow: 0 0 0 1px var(--pink-soft), 0 8px 30px rgba(255, 42, 109, .3), 0 0 40px rgba(1, 205, 254, .15);
+	z-index: 1;
+	box-shadow: 6px 6px 0 var(--pink);
 }
 
 .card .shot { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #000; border-bottom: 1px solid var(--line); }
@@ -264,7 +274,7 @@ ul.chips li.hot { border-color: var(--pink-soft); color: #ffd6ef; box-shadow: 0 
 	vertical-align: middle;
 	color: var(--pink-soft);
 	border: 1px solid var(--pink-soft);
-	border-radius: 4px;
+	border-radius: 0;
 }
 .tag.cyan { color: var(--cyan); border-color: var(--cyan); }
 .tag.gray { color: var(--muted); border-color: var(--line); }
@@ -285,11 +295,11 @@ ul.contact a {
 	padding: 12px 16px;
 	background: var(--panel);
 	border: 1px solid var(--line);
-	border-radius: 10px;
+	border-radius: 0;
 	font: 22px/1 var(--pixel);
 }
 ul.contact a span { font: 13px/1 var(--sans); color: var(--muted); }
-ul.contact a:hover { border-color: var(--pink-soft); box-shadow: 0 0 20px rgba(255, 42, 109, .3); }
+ul.contact a:hover { border-color: var(--pink-soft); box-shadow: 5px 5px 0 var(--pink); }
 
 footer { padding: 24px 16px 40px; text-align: center; font-size: 12px; color: var(--muted); }
 
