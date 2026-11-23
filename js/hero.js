@@ -110,7 +110,7 @@
 	plate.textContent = 'XANIT';
 	plate.setAttribute('aria-hidden', 'true');
 	plate.style.cssText = 'position:absolute;left:0;top:0;z-index:1;display:flex;align-items:center;justify-content:center;' +
-		'box-sizing:border-box;background:#ffd319;color:#0d0221;border:1px solid #0d0221;border-radius:2px;box-shadow:0 0 0 1px #ffd319;' +
+		'box-sizing:border-box;padding-top:.2em;background:#ffd319;color:#0d0221;border:1px solid #0d0221;border-radius:2px;box-shadow:0 0 0 1px #ffd319;' +
 		'font-family:Arial,Helvetica,sans-serif;font-weight:700;line-height:1;' +
 		'letter-spacing:.06em;white-space:nowrap;pointer-events:none;will-change:transform';
 	hero.appendChild(plate);
