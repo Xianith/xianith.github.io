@@ -87,32 +87,63 @@
 	}
 
 	// Rear view of the car. k outline, s body, d body shade, w/W glass,
-	// T tail lights, t bright lamps, y plate, g bumper, e exhaust
+	// T tail lights, t bright lamps, g bumper, e exhaust
+	function R(n, c) { return new Array(n + 1).join(c); }
 	var CAR = [
-		'.........kkkkkkkkkk.........',
-		'........kWWwwwwwwwwk........',
-		'.......kWwwwwwwwwwwwk.......',
-		'..kkkkkkkkkkkkkkkkkkkkkkkk..',
-		'.kssssssssssssssssssssssssk.',
-		'kssssssssssssssssssssssssssk',
-		'kTTTTTTTTTTTTTTTTTTTTTTTTTTk',
-		'kTttTTTTTTTTyyyyTTTTTTTTttTk',
-		'kddddddddddddddddddddddddddk',
-		'.kggggggggggggggggggggggggk.',
-		'.kkkkk..e..........e..kkkkk.',
-		'..kkk..................kkk..'
+		R(13, '.') + R(15, 'k') + R(13, '.'),
+		R(12, '.') + 'kWWW' + R(12, 'w') + 'k' + R(12, '.'),
+		R(11, '.') + 'kWW' + R(15, 'w') + 'k' + R(11, '.'),
+		R(10, '.') + 'kW' + R(18, 'w') + 'k' + R(10, '.'),
+		R(3, '.') + R(35, 'k') + R(3, '.'),
+		R(2, '.') + 'k' + R(35, 's') + 'k' + R(2, '.'),
+		'.k' + R(37, 's') + 'k.',
+		'k' + R(39, 's') + 'k',
+		'k' + R(39, 'T') + 'k',
+		'kTttt' + R(31, 'T') + 'tttTk',
+		'k' + R(39, 'T') + 'k',
+		'k' + R(39, 'd') + 'k',
+		'k' + R(39, 'd') + 'k',
+		'.k' + R(37, 'g') + 'k.',
+		'.k' + R(37, 'g') + 'k.',
+		'.' + R(7, 'k') + '..e' + R(19, '.') + 'e..' + R(7, 'k') + '.',
+		'..' + R(5, 'k') + R(27, '.') + R(5, 'k') + '..'
 	];
-	var INK = { k: '#0d0221', s: '#f3e9ff', d: '#b9a6e0', w: '#1b3f7a', W: '#7fe9ff', T: '#ff2a6d', t: '#ffe45c', y: '#ffd319', g: '#3a2a5c', e: '#01cdfe' };
+	var CAR_W = 41, CAR_H = CAR.length;
+	var INK = { k: '#0d0221', s: '#f3e9ff', d: '#b9a6e0', w: '#1b3f7a', W: '#7fe9ff', T: '#ff2a6d', t: '#ffe45c', g: '#3a2a5c', e: '#01cdfe' };
+
+	// License plate: 3x5 pixel letters on a yellow plate between the tail lights
+	var PLATE = 'XANIT';
+	var FONT = {
+		X: ['x.x', 'x.x', '.x.', 'x.x', 'x.x'],
+		A: ['.x.', 'x.x', 'xxx', 'x.x', 'x.x'],
+		N: ['x..x', 'xx.x', 'x.xx', 'x..x', 'x..x'],
+		I: ['xxx', '.x.', '.x.', '.x.', 'xxx'],
+		T: ['xxx', '.x.', '.x.', '.x.', '.x.']
+	};
 
 	function drawCar(x, y, lean, flick) {
-		for (var r = 0; r < CAR.length; r++) {
-			var shift = r < 3 ? lean : 0;   // the cabin leans into the turn
-			for (var c = 0; c < 28; c++) {
+		var r, c, i;
+		for (r = 0; r < CAR_H; r++) {
+			var shift = r < 4 ? lean : 0;   // the cabin leans into the turn
+			for (c = 0; c < CAR_W; c++) {
 				var ch = CAR[r].charAt(c);
 				if (ch === '.') continue;
 				ctx.fillStyle = (ch === 'e' && flick) ? '#ff71ce' : INK[ch];
 				ctx.fillRect(x + c + shift, y + r, 1, 1);
 			}
+		}
+		var pw = 1, px, py = y + 8, at;
+		for (i = 0; i < PLATE.length; i++) pw += FONT[PLATE.charAt(i)][0].length + 1;
+		px = x + Math.floor((CAR_W - pw) / 2);
+		ctx.fillStyle = '#0d0221'; ctx.fillRect(px - 1, py - 1, pw + 2, 9);
+		ctx.fillStyle = '#ffd319'; ctx.fillRect(px, py, pw, 7);
+		ctx.fillStyle = '#0d0221';
+		for (i = 0, at = px + 1; i < PLATE.length; i++) {
+			var glyph = FONT[PLATE.charAt(i)];
+			for (r = 0; r < 5; r++) for (c = 0; c < glyph[r].length; c++) {
+				if (glyph[r].charAt(c) === 'x') ctx.fillRect(at + c, py + 1 + r, 1, 1);
+			}
+			at += glyph[0].length + 1;
 		}
 	}
 
@@ -127,7 +158,7 @@
 		}
 
 		// Where the car is, and how hard it is turning
-		var amp = Math.max(0, Math.min(W * 0.3, W / 2 - 18));
+		var amp = Math.max(0, Math.min(W * 0.3, W / 2 - 24));
 		var sw = Math.sin(t * 0.8) * 0.8 + Math.sin(t * 1.9 + 1) * 0.2;
 		var vel = Math.cos(t * 0.8) * 0.64 + Math.cos(t * 1.9 + 1) * 0.38;
 
@@ -161,11 +192,11 @@
 		ctx.fillRect(0, HZ, W, 1);
 
 		// Car, with a little underglow
-		var cx = Math.round(CX + sw * amp) - 14;
-		var cyTop = H - 14;
+		var cx = Math.round(CX + sw * amp) - 20;
+		var cyTop = H - CAR_H - 2;
 		var lean = vel > 0.35 ? 1 : vel < -0.35 ? -1 : 0;
 		ctx.fillStyle = '#b967ff';
-		for (x = 2; x < 26; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + 12, 1, 1);
+		for (x = 3; x < CAR_W - 3; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + CAR_H, 1, 1);
 		drawCar(cx, cyTop, lean, Math.floor(t * 12) & 1);
 	}
 
