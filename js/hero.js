@@ -86,26 +86,36 @@
 		spots.forEach(function (s) { palm(bctx, Math.round(s[0] * W), HZ, Math.round(s[1] * HZ), s[2]); });
 	}
 
-	// Rear view of the car. k outline, s body, d body shade, w/W glass,
-	// T tail lights, t bright lamps, g bumper, e exhaust
+	// The car, seen from behind and above so it looks 3D: the hood is the far,
+	// narrow end pointing at the horizon, then windshield, roof, louvered rear
+	// window, rear deck, and the tail with its lights nearest the viewer.
+	// k outline, s/d/D steel light to dark, w/W glass, l louvers,
+	// T red, o amber and t white lamps, g black rear panel, e exhaust
+	function R(n, c) { return new Array(n + 1).join(c); }
 	var CAR = [
-		'.........kkkkkkkkkk.........',
-		'........kWWwwwwwwwwk........',
-		'.......kWwwwwwwwwwwwk.......',
-		'..kkkkkkkkkkkkkkkkkkkkkkkk..',
-		'.kssssssssssssssssssssssssk.',
-		'kssssssssssssssssssssssssssk',
-		'kTTTTTTTTTTTTTTTTTTTTTTTTTTk',
-		'kTttTTTTTTTTTTTTTTTTTTTTttTk',
-		'kddddddddddddddddddddddddddk',
-		'.kggggggggggggggggggggggggk.',
-		'.kkkkk..e..........e..kkkkk.',
-		'..kkk..................kkk..'
+		R(9, '.') + R(10, 'k') + R(9, '.'),
+		R(8, '.') + 'k' + R(8, 's') + 'dd' + 'k' + R(8, '.'),
+		R(7, '.') + 'k' + R(10, 's') + 'dd' + 'k' + R(7, '.'),
+		R(6, '.') + 'kWW' + R(12, 'w') + 'k' + R(6, '.'),
+		R(6, '.') + 'kW' + R(13, 'w') + 'k' + R(6, '.'),
+		R(5, '.') + 'k' + R(14, 's') + 'dd' + 'k' + R(5, '.'),
+		R(5, '.') + 'k' + R(14, 's') + 'dd' + 'k' + R(5, '.'),
+		R(4, '.') + 'k' + R(18, 'l') + 'k' + R(4, '.'),
+		R(4, '.') + 'k' + R(18, 'D') + 'k' + R(4, '.'),
+		R(3, '.') + 'k' + R(20, 'l') + 'k' + R(3, '.'),
+		R(2, '.') + 'k' + R(20, 'd') + 'DD' + 'k' + R(2, '.'),
+		'.k' + R(24, 's') + 'k.',
+		'k' + R(26, 'g') + 'k',
+		'kTTTToot' + R(12, 'g') + 'tooTTTTk',
+		'kTTTToot' + R(12, 'g') + 'tooTTTTk',
+		'k' + R(26, 'D') + 'k',
+		'.' + R(5, 'k') + '..e' + R(10, '.') + 'e..' + R(5, 'k') + '.',
+		'..' + R(3, 'k') + R(18, '.') + R(3, 'k') + '..'
 	];
-	var INK = { k: '#0d0221', s: '#f3e9ff', d: '#b9a6e0', w: '#1b3f7a', W: '#7fe9ff', T: '#ff2a6d', t: '#ffe45c', y: '#ffd319', g: '#3a2a5c', e: '#01cdfe' };
+	var INK = { k: '#0d0221', s: '#e4e6f2', d: '#b3b7cc', D: '#7c8099', w: '#1b3f7a', W: '#7fe9ff', l: '#1a1433', T: '#ff2a3d', o: '#ff9a2e', t: '#fff3c4', g: '#221a3a', e: '#01cdfe' };
 
 	// License plate: real text laid over the car, so it stays sharp and readable
-	// while everything else is chunky pixels. It covers sprite columns 8-19, rows 7-9.
+	// while everything else is chunky pixels. It covers sprite columns 8-19, rows 13-15.
 	var plate = document.createElement('div');
 	plate.textContent = 'XANIT';
 	plate.setAttribute('aria-hidden', 'true');
@@ -116,7 +126,7 @@
 	hero.appendChild(plate);
 	var SX = 1, SY = 1;
 
-	// The plate changes design every few seconds; the letters are always XANIT.
+	// One plate design is picked at random on each page load; the letters are always XANIT.
 	// Each is [background, text, inner border, outer edge].
 	var PLATES = [
 		['#ffd319', '#0d0221', '#0d0221', '#ffd319'],                                                              // classic yellow
@@ -134,11 +144,11 @@
 		plate.style.borderColor = PLATES[i][2];
 		plate.style.boxShadow = '0 0 0 1px ' + PLATES[i][3];
 	}
-	setPlate(still ? Math.floor(Math.random() * PLATES.length) : 0);
+	setPlate(Math.floor(Math.random() * PLATES.length));
 
 	function drawCar(x, y, lean, flick) {
 		for (var r = 0; r < CAR.length; r++) {
-			var shift = r < 3 ? lean : 0;   // the cabin leans into the turn
+			var shift = r < 3 ? lean * 2 : r < 7 ? lean : 0;   // the nose points into the turn
 			for (var c = 0; c < 28; c++) {
 				var ch = CAR[r].charAt(c);
 				if (ch === '.') continue;
@@ -194,13 +204,12 @@
 
 		// Car, with a little underglow
 		var cx = Math.round(CX + sw * amp) - 14;
-		var cyTop = H - 14;
+		var cyTop = H - CAR.length - 2;
 		var lean = vel > 0.35 ? 1 : vel < -0.35 ? -1 : 0;
 		ctx.fillStyle = '#b967ff';
-		for (x = 2; x < 26; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + 12, 1, 1);
+		for (x = 2; x < 26; x += 2) ctx.fillRect(cx + x + (Math.floor(t * 10) & 1), cyTop + CAR.length, 1, 1);
 		drawCar(cx, cyTop, lean, Math.floor(t * 12) & 1);
-		if (!still) setPlate(Math.floor(t / 7) % PLATES.length);
-		plate.style.transform = 'translate(' + ((cx + 8) * SX) + 'px,' + ((cyTop + 7) * SY) + 'px)';
+		plate.style.transform = 'translate(' + ((cx + 8) * SX) + 'px,' + ((cyTop + 13) * SY) + 'px)';
 	}
 
 	function resize() {
